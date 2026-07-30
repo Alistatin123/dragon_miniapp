@@ -7,86 +7,103 @@
 
 <style>
 body{
-  margin:0;
-  background:#0f172a;
-  color:white;
-  font-family:Arial;
-  text-align:center;
+margin:0;
+background:#0f172a;
+color:white;
+font-family:Arial,sans-serif;
+text-align:center;
+padding-bottom:80px;
+}
+
+.header{
+padding:20px;
 }
 
 .logo{
-  font-size:70px;
-  margin-top:30px;
+font-size:60px;
 }
 
-.card{
-  background:#1e293b;
-  margin:20px;
-  padding:20px;
-  border-radius:15px;
+.balance,.card{
+background:#1e293b;
+margin:15px;
+padding:20px;
+border-radius:20px;
+}
+
+.dragon{
+font-size:50px;
 }
 
 button{
-  width:80%;
-  padding:15px;
-  margin:10px;
-  border:0;
-  border-radius:15px;
-  background:#2563eb;
-  color:white;
-  font-size:18px;
+background:#2563eb;
+color:white;
+border:0;
+padding:12px 25px;
+border-radius:15px;
+font-size:16px;
 }
 
-#coin{
-  font-size:30px;
+.menu{
+position:fixed;
+bottom:0;
+left:0;
+width:100%;
+background:#020617;
+display:flex;
+justify-content:space-around;
+padding:12px 0;
+}
+
+.menu div{
+font-size:13px;
 }
 </style>
+
 </head>
 
 <body>
 
+<div class="header">
 <div class="logo">🐉</div>
-
 <h1>Dragon Mining</h1>
 <p>Mine • Invite • Earn</p>
-
-<div class="card">
-<h2>💰 Balance</h2>
-<div id="coin">0 DRG</div>
 </div>
 
-<button onclick="mine()">⛏️ Mine Dragon Coin</button>
+<div class="balance">
+💎 Balance<br>
+0 DRAGON
+</div>
 
-<button onclick="invite()">👥 Invite Friends</button>
+<div class="card">
+<div class="dragon">🟢🐉</div>
+<h2>Green Dragon</h2>
+<p>Deposit: 2 TON</p>
+<p>Reward: 0.2 TON / Day</p>
+<button>Start Mining</button>
+</div>
 
-<button onclick="tasks()">📋 Tasks</button>
+<div class="card">
+<div class="dragon">🔴🐉</div>
+<h2>Red Dragon</h2>
+<p>Deposit: 5 TON</p>
+<p>Reward: 0.5 TON / Day</p>
+<button>Start Mining</button>
+</div>
 
-<button onclick="leaderboard()">🏆 Leaderboard</button>
+<div class="card">
+<div class="dragon">⚪🐉</div>
+<h2>White Dragon</h2>
+<p>Deposit: 10 TON</p>
+<p>Reward: 1 TON / Day</p>
+<button>Start Mining</button>
+</div>
 
-
-<script>
-
-let balance = 0;
-
-function mine(){
- balance += 1;
- document.getElementById("coin").innerHTML = balance + " DRG";
- alert("⛏️ Mining complete! +1 DRG");
-}
-
-function invite(){
- alert("👥 Your referral system will be added soon!");
-}
-
-function tasks(){
- alert("📋 Tasks coming soon!");
-}
-
-function leaderboard(){
- alert("🏆 Leaderboard coming soon!");
-}
-
-</script>
+<div class="menu">
+<div>⛏️<br>Mine</div>
+<div>👥<br>Friends</div>
+<div>📋<br>Tasks</div>
+<div>💰<br>Wallet</div>
+</div>
 
 </body>
 </html>

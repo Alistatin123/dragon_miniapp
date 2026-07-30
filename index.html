@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dragon Mining</title>
+
+<style>
+body{
+  margin:0;
+  background:#0f172a;
+  color:white;
+  font-family:Arial;
+  text-align:center;
+}
+
+.logo{
+  font-size:70px;
+  margin-top:30px;
+}
+
+.card{
+  background:#1e293b;
+  margin:20px;
+  padding:20px;
+  border-radius:15px;
+}
+
+button{
+  width:80%;
+  padding:15px;
+  margin:10px;
+  border:0;
+  border-radius:15px;
+  background:#2563eb;
+  color:white;
+  font-size:18px;
+}
+
+#coin{
+  font-size:30px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="logo">🐉</div>
+
+<h1>Dragon Mining</h1>
+<p>Mine • Invite • Earn</p>
+
+<div class="card">
+<h2>💰 Balance</h2>
+<div id="coin">0 DRG</div>
+</div>
+
+<button onclick="mine()">⛏️ Mine Dragon Coin</button>
+
+<button onclick="invite()">👥 Invite Friends</button>
+
+<button onclick="tasks()">📋 Tasks</button>
+
+<button onclick="leaderboard()">🏆 Leaderboard</button>
+
+
+<script>
+
+let balance = 0;
+
+function mine(){
+ balance += 1;
+ document.getElementById("coin").innerHTML = balance + " DRG";
+ alert("⛏️ Mining complete! +1 DRG");
+}
+
+function invite(){
+ alert("👥 Your referral system will be added soon!");
+}
+
+function tasks(){
+ alert("📋 Tasks coming soon!");
+}
+
+function leaderboard(){
+ alert("🏆 Leaderboard coming soon!");
+}
+
+</script>
+
+</body>
+</html>

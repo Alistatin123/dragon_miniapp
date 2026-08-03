@@ -74,7 +74,6 @@ font-size:13px;
 
 </head>
 
-
 <body>
 
 
@@ -96,6 +95,7 @@ font-size:13px;
 0 DRAGON
 
 </div>
+
 
 
 
@@ -125,6 +125,7 @@ Start Mining
 
 <p>🎁 Get 5% bonus from every deposit made by your invited friends.</p>
 
+
 <p>Your Referral Code:</p>
 
 <input id="refCode" readonly>
@@ -135,15 +136,71 @@ Start Mining
 <input id="refLink" readonly>
 
 
-<br>
-
 <button onclick="copyLink()">
 📋 Copy Referral Link
 </button>
 
+
 <p id="copyText"></p>
 
+
+<hr>
+
+
+<p>
+👥 Invited Friends:
+<span id="friendsCount">0</span>
+</p>
+
+
+<p>
+🎁 Referral Earnings:
+<span id="refEarn">0</span> DRAGON
+</p>
+
+
 </div>
+
+
+
+
+<div class="card">
+
+<h2>📋 Daily Tasks</h2>
+
+<p>Complete tasks and earn rewards</p>
+
+<button onclick="taskDone()">
+Complete Task
+</button>
+
+<p id="taskText"></p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h2>💰 Wallet</h2>
+
+<p>
+Balance:
+<span id="walletBalance">
+0
+</span>
+DRAGON
+</p>
+
+<button onclick="withdraw()">
+Withdraw
+</button>
+
+<p id="withdrawText"></p>
+
+</div>
+
 
 
 
@@ -185,6 +242,7 @@ let balance =
 parseFloat(localStorage.getItem("dragon_balance")) || 0;
 
 
+
 function updateBalance(){
 
 document.getElementById("balance").innerHTML =
@@ -192,9 +250,15 @@ document.getElementById("balance").innerHTML =
 balance.toFixed(2)+
 " DRAGON";
 
+
+document.getElementById("walletBalance").innerHTML =
+balance.toFixed(2);
+
 }
 
+
 updateBalance();
+
 
 
 
@@ -213,7 +277,9 @@ balance
 
 updateBalance();
 
+
 },10000);
+
 
 }
 
@@ -230,6 +296,7 @@ referralCode =
 "DRAGON"+
 Math.floor(1000 + Math.random()*9000);
 
+
 localStorage.setItem(
 "ref_code",
 referralCode
@@ -238,9 +305,9 @@ referralCode
 }
 
 
+
 let referralLink =
-"https://t.me/AlistatinBot?start="+
-referralCode;
+"https://t.me/AlistatinBot?start="+referralCode;
 
 
 
@@ -258,6 +325,7 @@ function copyLink(){
 
 navigator.clipboard.writeText(referralLink);
 
+
 document.getElementById("copyText").innerHTML =
 "✅ Referral link copied!";
 
@@ -265,16 +333,68 @@ document.getElementById("copyText").innerHTML =
 
 
 
-function showFriends(){
 
-window.scrollTo(0,500);
+
+let friends =
+localStorage.getItem("friends_count") || 0;
+
+
+let earnings =
+localStorage.getItem("ref_earn") || 0;
+
+
+
+document.getElementById("friendsCount").innerHTML =
+friends;
+
+
+document.getElementById("refEarn").innerHTML =
+earnings;
+
+
+
+
+
+
+function taskDone(){
+
+document.getElementById("taskText").innerHTML =
+"✅ Task completed! Reward added.";
+
+balance += 0.05;
+
+localStorage.setItem(
+"dragon_balance",
+balance
+);
+
+updateBalance();
 
 }
+
+
+
+
+function withdraw(){
+
+document.getElementById("withdrawText").innerHTML =
+"⚠️ Withdraw system coming soon.";
+
+}
+
+
+
+
+function showFriends(){
+
+window.scrollTo(0,400);
+
+}
+
 
 
 </script>
 
 
 </body>
-
 </html>

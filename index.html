@@ -69,7 +69,7 @@ font-size:13px;
 <p>Mine • Invite • Earn</p>
 </div>
 
-<div class="balance">
+<div class="balance" id="balance">
 💎 Balance<br>
 0 DRAGON
 </div>
@@ -79,7 +79,7 @@ font-size:13px;
 <h2>Green Dragon</h2>
 <p>Deposit: 2 TON</p>
 <p>Reward: 0.2 TON / Day</p>
-<button>Start Mining</button>
+<button onclick="startMining()">Start Mining</button>
 </div>
 
 <div class="card">
@@ -87,7 +87,7 @@ font-size:13px;
 <h2>Red Dragon</h2>
 <p>Deposit: 5 TON</p>
 <p>Reward: 0.5 TON / Day</p>
-<button>Start Mining</button>
+<button onclick="startMining()">Start Mining</button>
 </div>
 
 <div class="card">
@@ -95,7 +95,7 @@ font-size:13px;
 <h2>White Dragon</h2>
 <p>Deposit: 10 TON</p>
 <p>Reward: 1 TON / Day</p>
-<button>Start Mining</button>
+<button onclick="startMining()">Start Mining</button>
 </div>
 
 <div class="menu">
@@ -104,6 +104,23 @@ font-size:13px;
 <div>📋<br>Tasks</div>
 <div>💰<br>Wallet</div>
 </div>
+
+<script>
+let balance = 0;
+
+function startMining(){
+alert("⛏️ Mining Started!");
+
+setInterval(function(){
+balance += 0.01;
+
+document.getElementById("balance").innerHTML =
+"💎 Balance<br>" + balance.toFixed(2) + " DRAGON";
+
+},10000);
+
+}
+</script>
 
 </body>
 </html>

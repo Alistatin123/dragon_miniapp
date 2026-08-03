@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Dragon Mining</title>
 
 <style>
+
 body{
 margin:0;
 background:#0f172a;
@@ -56,64 +59,133 @@ padding:12px 0;
 
 .menu div{
 font-size:13px;
+cursor:pointer;
 }
+
 </style>
 
 </head>
 
+
 <body>
 
+
 <div class="header">
+
 <div class="logo">🐉</div>
+
 <h1>Dragon Mining</h1>
+
 <p>Mine • Invite • Earn</p>
+
 </div>
+
 
 
 <div class="balance" id="balance">
+
 💎 Balance<br>
+
 0 DRAGON
+
 </div>
 
 
+
+
 <div class="card">
+
 <div class="dragon">🟢🐉</div>
+
 <h2>Green Dragon</h2>
+
 <p>Deposit: 2 TON</p>
+
 <p>Reward: 0.2 TON / Day</p>
-<button onclick="startMining()">Start Mining</button>
+
+<button onclick="startMining()">
+Start Mining
+</button>
+
 </div>
 
 
+
+
 <div class="card">
+
 <div class="dragon">🔴🐉</div>
+
 <h2>Red Dragon</h2>
+
 <p>Deposit: 5 TON</p>
+
 <p>Reward: 0.5 TON / Day</p>
-<button onclick="startMining()">Start Mining</button>
+
+<button onclick="startMining()">
+Start Mining
+</button>
+
 </div>
+
+
 
 
 <div class="card">
+
 <div class="dragon">⚪🐉</div>
+
 <h2>White Dragon</h2>
+
 <p>Deposit: 10 TON</p>
+
 <p>Reward: 1 TON / Day</p>
-<button onclick="startMining()">Start Mining</button>
+
+<button onclick="startMining()">
+Start Mining
+</button>
+
 </div>
+
+
 
 
 <div class="menu">
-<div onclick="startMining()">⛏️<br>Mine</div>
-<div onclick="showFriends()">👥<br>Friends</div>
-<div>📋<br>Tasks</div>
-<div>💰<br>Wallet</div>
+
+<div onclick="startMining()">
+⛏️<br>
+Mine
 </div>
+
+
+<div onclick="showFriends()">
+👥<br>
+Friends
+</div>
+
+
+<div>
+📋<br>
+Tasks
+</div>
+
+
+<div>
+💰<br>
+Wallet
+</div>
+
+
+</div>
+
+
 
 
 <script>
 
+
 let balance = parseFloat(localStorage.getItem("dragon_balance")) || 0;
+
 
 
 function updateBalance(){
@@ -127,36 +199,65 @@ document.getElementById("balance").innerHTML =
 updateBalance();
 
 
+
+
 function startMining(){
 
 alert("⛏️ Mining Started!");
 
+
 setInterval(function(){
+
 
 balance += 0.01;
 
-localStorage.setItem("dragon_balance", balance);
+
+localStorage.setItem(
+"dragon_balance",
+balance
+);
+
 
 updateBalance();
 
+
 },10000);
 
+
 }
+
+
+
 
 
 function showFriends(){
 
+
 alert(
-"👥 Friends & Referral\n\n" +
-"Invite friends and earn rewards!\n\n" +
-"Your referral link:\n" +
+
+"👥 Friends & Referral\n\n"+
+
+"Invite your friends and earn rewards!\n\n"+
+
+"🎁 Referral Bonus:\n"+
+"Get 5% bonus from every deposit made by your invited friends.\n\n"+
+
+"👥 More friends = More rewards\n\n"+
+
+"Your referral link:\n"+
 "https://t.me/DragonMiningBot?start=ref123"
+
 );
 
+
 }
+
+
 
 </script>
 
 
+
 </body>
+
 </html>

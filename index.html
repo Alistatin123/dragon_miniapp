@@ -184,14 +184,17 @@ Wallet
 <script>
 
 
-let balance = parseFloat(localStorage.getItem("dragon_balance")) || 0;
+let balance =
+parseFloat(localStorage.getItem("dragon_balance")) || 0;
 
 
 
 function updateBalance(){
 
 document.getElementById("balance").innerHTML =
-"💎 Balance<br>" + balance.toFixed(2) + " DRAGON";
+"💎 Balance<br>" +
+balance.toFixed(2) +
+" DRAGON";
 
 }
 
@@ -205,24 +208,18 @@ function startMining(){
 
 alert("⛏️ Mining Started!");
 
-
 setInterval(function(){
 
-
 balance += 0.01;
-
 
 localStorage.setItem(
 "dragon_balance",
 balance
 );
 
-
 updateBalance();
 
-
 },10000);
-
 
 }
 
@@ -233,19 +230,47 @@ updateBalance();
 function showFriends(){
 
 
+let referralCode =
+localStorage.getItem("ref_code");
+
+
+if(!referralCode){
+
+referralCode =
+"DRAGON" +
+Math.floor(1000 + Math.random()*9000);
+
+
+localStorage.setItem(
+"ref_code",
+referralCode
+);
+
+}
+
+
+
+let referralLink =
+"https://t.me/AlistatinBot?start=" +
+referralCode;
+
+
+
 alert(
 
 "👥 Friends & Referral\n\n"+
 
-"Invite your friends and earn rewards!\n\n"+
+"Invite friends and earn rewards!\n\n"+
 
 "🎁 Referral Bonus:\n"+
 "Get 5% bonus from every deposit made by your invited friends.\n\n"+
 
-"👥 More friends = More rewards\n\n"+
+"Your Referral Code:\n"+
+referralCode+
+"\n\n"+
 
-"Your referral link:\n"+
-"https://t.me/AlistatinBot?start=ref123"
+"Your Referral Link:\n"+
+referralLink
 
 );
 
@@ -255,7 +280,6 @@ alert(
 
 
 </script>
-
 
 
 </body>

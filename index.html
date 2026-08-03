@@ -44,6 +44,15 @@ border:0;
 padding:12px 25px;
 border-radius:15px;
 font-size:16px;
+margin:5px;
+}
+
+input{
+width:90%;
+padding:12px;
+border-radius:10px;
+border:0;
+text-align:center;
 }
 
 .menu{
@@ -59,7 +68,6 @@ padding:12px 0;
 
 .menu div{
 font-size:13px;
-cursor:pointer;
 }
 
 </style>
@@ -85,11 +93,9 @@ cursor:pointer;
 <div class="balance" id="balance">
 
 💎 Balance<br>
-
 0 DRAGON
 
 </div>
-
 
 
 
@@ -111,42 +117,33 @@ Start Mining
 
 
 
-
 <div class="card">
 
-<div class="dragon">🔴🐉</div>
+<h2>👥 Friends Referral</h2>
 
-<h2>Red Dragon</h2>
+<p>Invite friends and earn rewards!</p>
 
-<p>Deposit: 5 TON</p>
+<p>🎁 Get 5% bonus from every deposit made by your invited friends.</p>
 
-<p>Reward: 0.5 TON / Day</p>
+<p>Your Referral Code:</p>
 
-<button onclick="startMining()">
-Start Mining
+<input id="refCode" readonly>
+
+
+<p>Your Referral Link:</p>
+
+<input id="refLink" readonly>
+
+
+<br>
+
+<button onclick="copyLink()">
+📋 Copy Referral Link
 </button>
 
-</div>
-
-
-
-
-<div class="card">
-
-<div class="dragon">⚪🐉</div>
-
-<h2>White Dragon</h2>
-
-<p>Deposit: 10 TON</p>
-
-<p>Reward: 1 TON / Day</p>
-
-<button onclick="startMining()">
-Start Mining
-</button>
+<p id="copyText"></p>
 
 </div>
-
 
 
 
@@ -188,19 +185,16 @@ let balance =
 parseFloat(localStorage.getItem("dragon_balance")) || 0;
 
 
-
 function updateBalance(){
 
 document.getElementById("balance").innerHTML =
-"💎 Balance<br>" +
-balance.toFixed(2) +
+"💎 Balance<br>"+
+balance.toFixed(2)+
 " DRAGON";
 
 }
 
-
 updateBalance();
-
 
 
 
@@ -226,10 +220,6 @@ updateBalance();
 
 
 
-
-function showFriends(){
-
-
 let referralCode =
 localStorage.getItem("ref_code");
 
@@ -237,9 +227,8 @@ localStorage.getItem("ref_code");
 if(!referralCode){
 
 referralCode =
-"DRAGON" +
+"DRAGON"+
 Math.floor(1000 + Math.random()*9000);
-
 
 localStorage.setItem(
 "ref_code",
@@ -249,34 +238,38 @@ referralCode
 }
 
 
-
 let referralLink =
-"https://t.me/AlistatinBot?start=" +
+"https://t.me/AlistatinBot?start="+
 referralCode;
 
 
 
-alert(
+document.getElementById("refCode").value =
+referralCode;
 
-"👥 Friends & Referral\n\n"+
 
-"Invite friends and earn rewards!\n\n"+
+document.getElementById("refLink").value =
+referralLink;
 
-"🎁 Referral Bonus:\n"+
-"Get 5% bonus from every deposit made by your invited friends.\n\n"+
 
-"Your Referral Code:\n"+
-referralCode+
-"\n\n"+
 
-"Your Referral Link:\n"+
-referralLink
 
-);
+function copyLink(){
 
+navigator.clipboard.writeText(referralLink);
+
+document.getElementById("copyText").innerHTML =
+"✅ Referral link copied!";
 
 }
 
+
+
+function showFriends(){
+
+window.scrollTo(0,500);
+
+}
 
 
 </script>

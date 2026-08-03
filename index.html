@@ -395,6 +395,15 @@ window.scrollTo(0,400);
 
 </script>
 
+<div id="ton-connect"></div>
 
+<script src="https://unpkg.com/@tonconnect/ui@2.0.0/dist/tonconnect-ui.min.js"></script>
+
+<script>
+const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({
+    manifestUrl: "https://alistatin123.github.io/dragon_miniapp/tonconnect-manifest.json",
+    buttonRootId: "ton-connect"
+});
+</script>
 </body>
 </html>

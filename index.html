@@ -104,8 +104,8 @@ font-size:13px;
 
 
 <div class="menu">
-<div>⛏️<br>Mine</div>
-<div>👥<br>Friends</div>
+<div onclick="startMining()">⛏️<br>Mine</div>
+<div onclick="showFriends()">👥<br>Friends</div>
 <div>📋<br>Tasks</div>
 <div>💰<br>Wallet</div>
 </div>
@@ -140,6 +140,18 @@ localStorage.setItem("dragon_balance", balance);
 updateBalance();
 
 },10000);
+
+}
+
+
+function showFriends(){
+
+alert(
+"👥 Friends & Referral\n\n" +
+"Invite friends and earn rewards!\n\n" +
+"Your referral link:\n" +
+"https://t.me/DragonMiningBot?start=ref123"
+);
 
 }
 

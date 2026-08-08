@@ -404,20 +404,41 @@ window.scrollTo(0,400);
 
 <script src="https://unpkg.com/@tonconnect/ui@2.0.0/dist/tonconnect-ui.min.js"></script>
 
-<script>>    
+<script>
 const tonConnectUI = new TON_CONNECT_UI.TonConnectUI({    
     manifestUrl: "https://alistatin123.github.io/dragon_miniapp/tonconnect-manifest.json",    
     buttonRootId: "ton-connect"    
 });    
     
     
-function deposit(){    
-    
-document.getElementById("depositText").innerHTML =    
-"💎 Send TON to:<br><br>" +    
-"UQBC23Zyhj0EPKM8I5MMCqXqlXWfCuZge5s9rDIZdRjYPXeK";    
-    
-}    
+async function deposit(){
+
+    try {
+
+        const transaction = {
+            validUntil: Math.floor(Date.now() / 1000) + 300,
+
+            messages: [
+                {
+                    address: "UQBC23Zyhj0EPKM8I5MMCqXqlXWfCuZge5s9rDIZdRjYPXeK",
+                    amount: "2000000000"
+                }
+            ]
+        };
+
+        await tonConnectUI.sendTransaction(transaction);
+
+        document.getElementById("depositText").innerHTML =
+        "✅ Transaction sent successfully!";
+
+    } catch (error) {
+
+        document.getElementById("depositText").innerHTML =
+        "❌ Transaction cancelled or failed.";
+
+        console.error(error);
+    }
+}
     
 </script>
 </body>

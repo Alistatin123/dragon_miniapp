@@ -292,29 +292,14 @@ updateBalance();
 
 
 
-let referralCode =
-localStorage.getItem("ref_code");
+let telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
+let telegramId = telegramUser ? telegramUser.id : null;
 
+let referralCode = telegramId
+? "DRAGON" + telegramId
+: "DRAGON" + Math.floor(1000 + Math.random()*9000);
 
-if(!referralCode){
-
-referralCode =
-"DRAGON"+
-Math.floor(1000 + Math.random()*9000);
-
-
-localStorage.setItem(
-"ref_code",
-referralCode
-);
-
-}
-
-
-
-let referralLink =
-"https://t.me/AlistatinBot?start="+referralCode;
-
+let referralLink = "https://t.me/AlistatinBot?start=" + referralCode;
 
 
 document.getElementById("refCode").value =

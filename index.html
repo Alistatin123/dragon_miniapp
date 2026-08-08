@@ -382,11 +382,31 @@ updateBalance();
 
 function withdraw(){
 
-document.getElementById("withdrawText").innerHTML =
-"⚠️ Withdraw system coming soon.";
+    let wallet = prompt("💳 Ampidiro ny TON wallet address:");
+    if(!wallet) return;
 
+    let amount = prompt("💰 Firy TON no tianao alaina? (Minimum 1 TON)");
+    if(!amount) return;
+
+    amount = parseFloat(amount);
+
+    if(isNaN(amount) || amount < 1){
+        document.getElementById("withdrawText").innerHTML =
+        "⚠️ Minimum withdrawal is 1 TON.";
+        return;
+    }
+
+    let fee = amount * 0.05;
+    let receive = amount - fee;
+
+    document.getElementById("withdrawText").innerHTML =
+    "⏳ Withdrawal request<br><br>" +
+    "Amount: " + amount.toFixed(2) + " TON<br>" +
+    "Fee (5%): " + fee.toFixed(2) + " TON<br>" +
+    "You receive: " + receive.toFixed(2) + " TON<br><br>" +
+    "Wallet: " + wallet +
+    "<br><br>⚠️ Processing...";
 }
-
 
 
 

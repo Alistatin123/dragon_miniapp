@@ -295,6 +295,24 @@ updateBalance();
 let telegramUser = window.Telegram.WebApp.initDataUnsafe.user;
 let telegramId = telegramUser ? telegramUser.id : null;
 
+fetch("https://donna-unavailable-excel-promo.trycloudflare.com/register", {
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+        telegram_id: String(telegramId || ""),
+        referral_code: new URLSearchParams(window.location.search).get("start") || ""
+    })
+})
+.then(response => response.json())
+.then(data => {
+    console.log("Dragon registration:", data);
+})
+.catch(error => {
+    console.error("Registration error:", error);
+});
+
 let referralCode = telegramId
 ? "DRAGON" + telegramId
 : "DRAGON" + Math.floor(1000 + Math.random()*9000);
